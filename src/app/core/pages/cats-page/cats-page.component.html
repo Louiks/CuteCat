@@ -1,0 +1,14 @@
+@if (isLoadingCats) {
+    <mat-progress-bar class="progress-bar"
+                      mode="indeterminate"></mat-progress-bar>
+}
+
+<div class="cat-container">
+    @for (cat of cats$ | async; track cat) {
+        <app-cat-card (favoritesChanged)="favoritesChanged(cat)"
+                      [catData]="cat"
+                      class="cat-container__entry"></app-cat-card>
+    }
+</div>
+
+<app-scroll-to-top-button [isVisible]="shouldShowScrollTopButton"></app-scroll-to-top-button>

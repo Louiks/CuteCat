@@ -1,0 +1,23 @@
+<div class="image-container">
+    <img [src]="catData.imageUrl"
+         class="cat__image"
+         loading="lazy"/>
+    <p class="text-overlay text-overlay--left">{{ catData.name }}</p>
+    <p class="text-overlay text-overlay--right">{{ catData.likes }}
+        <mat-icon>favorite</mat-icon>
+    </p>
+</div>
+<hr class="divider">
+<div class="body-container">
+    <p class="cat__description">{{ catData.description }}</p>
+    <div class="button-container">
+        <button (click)="favoritesClicked()"
+                [class.favorite]="this.catData.isFavorite"
+                [matRippleColor]="catData.isFavorite ? MAT_RIPPLE_COLOR_DARK : MAT_RIPPLE_COLOR_LIGHT"
+                class="favorite_switcher"
+                mat-icon-button
+                mat-ripple>
+            <mat-icon>favorite</mat-icon>
+        </button>
+    </div>
+</div>

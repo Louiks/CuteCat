@@ -29,11 +29,18 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/",
+                "src/styles/"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -93,6 +100,12 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/",
+                "src/styles/"
+              ]
+            },
             "scripts": []
           }
         }

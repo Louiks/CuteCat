@@ -1,0 +1,33 @@
+<form (ngSubmit)="onSubmit()"
+      [class.blur]="isLoading"
+      [formGroup]="loginForm"
+      class="login-form">
+    <div>
+        <h2 class="login-form__title">Login to CuteCat!</h2>
+        <p class="login-form__subtitle">Please provide credentials</p>
+        <div class="form-content">
+            <app-custom-text-input [control]="email"
+                                   [disabled]="isLoading"
+                                   [isRequired]="true"
+                                   controlName="email"
+                                   label="Email"
+                                   title="Email must be in the format: example@domain.com"
+                                   type="email"></app-custom-text-input>
+            <app-custom-text-input [control]="password"
+                                   [disabled]="isLoading"
+                                   [isRequired]="true"
+                                   controlName="password"
+                                   label="Password"
+                                   title="Password must have at least 6 characters"
+                                   type="password"></app-custom-text-input>
+        </div>
+    </div>
+    <div *ngIf="isLoading"
+         class="overlay"></div>
+    <button [disabled]="loginForm.invalid || isLoading"
+            [matRippleColor]="MAT_RIPPLE_COLOR"
+            class="submit-button"
+            mat-ripple
+            type="submit">Login
+    </button>
+</form>

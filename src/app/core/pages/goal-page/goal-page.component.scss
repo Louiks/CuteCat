@@ -1,0 +1,26 @@
+@use '../../../../styles/mixins' as mixins;
+@use '../../../../styles/spacing' as spacing;
+@use '../../../../styles/colors' as colors;
+
+:host {
+  @include mixins.background-blur;
+  padding-top: spacing.$x4-large;
+}
+
+p {
+  margin-left: 2rem;
+}
+
+.unordered-list {
+  list-style: none;
+
+  li {
+    margin-bottom: spacing.$spacing-medium;
+
+    &::before {
+      content: "✔";
+      padding-right: spacing.$spacing-small;
+      color: colors.$primary-darker;
+    }
+  }
+}

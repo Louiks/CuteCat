@@ -1,0 +1,101 @@
+@use 'spacing' as spacing;
+@use 'colors' as colors;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: spacing.$x-large;
+  border-radius: 1rem;
+  box-shadow: 5px 3px 10px 2px rgba(colors.$secondary, 0.3);
+  background: linear-gradient(colors.$milky-white, colors.$greyish-white);
+}
+
+.cat {
+  &__image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: colors.$white;
+  }
+
+  &__description {
+    max-width: 400px;
+  }
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.divider {
+  width: 100%;
+}
+
+.body-container {
+  margin-top: spacing.$spacing-medium;
+  max-width: 400px;
+  display: flex;
+  box-sizing: border-box;
+  padding: spacing.$spacing-large;
+  gap: spacing.$x-large;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+
+  button {
+    color: colors.$white;
+    box-shadow: -1px 3px 10px 4px rgba(colors.$white, 0.1);
+    overflow: hidden;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+      font-weight: 700;
+    }
+  }
+
+  .favorite_switcher:not(.favorite) {
+    background-color: colors.$greyish-white-v2;
+
+    &:hover {
+      color: colors.$red;
+    }
+  }
+
+  .favorite {
+    background-color: colors.$greyish-white;
+    color: colors.$red;
+
+    &:hover {
+      color: colors.$secondary-light;
+      background-color: colors.$greyish-white-v2;
+    }
+  }
+}
+
+
+.text-overlay {
+  position: absolute;
+  bottom: spacing.$spacing-small;
+  background: rgba(colors.$black, 0.5);
+  color: colors.$white;
+  padding: spacing.$spacing-small spacing.$spacing-medium;
+  font-size: 16px;
+  border-radius: 5px;
+
+  &--right {
+    right: spacing.$spacing-medium;
+    display: flex;
+    align-items: center;
+    gap: spacing.$spacing-small;
+  }
+
+  &--left {
+    left: spacing.$spacing-medium;
+  }
+}

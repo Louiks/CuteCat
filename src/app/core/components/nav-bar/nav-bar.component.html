@@ -1,0 +1,32 @@
+<nav class="navbar">
+    <div class="logo-container">
+        <img alt="Logo"
+             class="logo-container__logo"
+             src="/assets/cat.svg"/>
+        <span class="logo-container__text">CuteCat</span>
+    </div>
+    @if (isLoggedIn()) {
+        <div class="button-container">
+            @for (button of buttons; track $index) {
+                <button class="button-container__button"
+                        mat-button
+                        mat-ripple
+                        [class.active]="isActive(button.route)"
+                        [matRippleColor]="button.rippleColor"
+                        [routerLink]="button.route"
+                        [title]="button.title">
+                    {{ button.label }}
+                </button>
+            }
+            <button class="button-container__button"
+                    title="Log out"
+                    mat-icon-button
+                    mat-ripple
+                    [matRippleColor]="MAT_RIPPLE_COLOR"
+                    (click)="logout()">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+    }
+
+</nav>

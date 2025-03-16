@@ -1,0 +1,21 @@
+<div class="custom-text-input">
+    <label [for]="controlName"
+           class="custom-text-input__label">
+        {{ label }}
+        @if (isRequired) {
+            *
+        }
+    </label>
+
+    <input [formControl]="control"
+           [id]="controlName"
+           [type]="type"
+           class="custom-text-input__input"/>
+
+    @if (control.invalid && !control.untouched && errorMessages.length > 0) {
+        @for (error of errorMessages; track $index) {
+            <span class="custom-text-input__error"
+                  [innerHTML]="error | strengthen"></span>
+        }
+    }
+</div>

@@ -1,0 +1,42 @@
+@use 'colors' as colors;
+@use 'spacing' as spacing;
+
+.custom-text-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: spacing.$spacing-large;
+
+  &__label {
+    font-weight: bold;
+    margin-bottom: spacing.$spacing-small;
+    color: colors.$secondary;
+  }
+
+  &__input {
+    padding: spacing.$spacing-medium;
+    border: 1px solid colors.$secondary-very-light;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: colors.$primary;
+      outline: none;
+    }
+
+    &.ng-touched.ng-invalid:not(.ng-pristine) {
+      background-color: colors.$error-bg;
+    }
+  }
+
+  &__error {
+    margin-top: spacing.$spacing-small;
+    background-color: colors.$error-bg;
+    border: 1px solid colors.$error;
+    border-radius: 0.5rem;
+    padding: spacing.$spacing-medium;
+
+    line-height: 1.3em;
+    font-size: 0.875em;
+    color: colors.$error;
+  }
+}

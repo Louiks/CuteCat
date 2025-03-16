@@ -1,0 +1,57 @@
+@use 'colors' as colors;
+@use 'spacing' as spacing;
+
+.navbar {
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: spacing.$spacing-small spacing.$spacing-large;
+  background-color: colors.$primary;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  transition: transform 0.2s;
+  min-height: 60px;
+
+  &--hidden {
+    transform: translateY(-60px);
+    box-shadow: none;
+  }
+}
+
+.logo-container, .button-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  &__logo {
+    height: 32px;
+    margin-right: spacing.$spacing-medium;
+  }
+
+  &__text {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.button-container {
+  &__button {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    font-weight: 600;
+
+    &:hover {
+      background-color: colors.$primary-hover;
+    }
+
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}

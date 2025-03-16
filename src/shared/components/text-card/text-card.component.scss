@@ -1,0 +1,20 @@
+@use 'spacing' as spacing;
+@use 'colors' as colors;
+
+:host {
+  --card-width: 1200px;
+  --half-card-width: calc(var(--card-width) / 2);
+
+  transform: translateX(calc(50vw - var(--half-card-width)));
+  width: var(--card-width);
+  box-shadow: 1.5rem 1.5rem 1.5rem rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  border-top: 1px solid rgba(colors.$white, 0.5);
+  border-left: 1px solid rgba(colors.$white, 0.5);
+  background-color: colors.$white;
+  padding: spacing.$x-large;
+  color: colors.$black;
+  display: flex;
+  flex-direction: column;
+}
+

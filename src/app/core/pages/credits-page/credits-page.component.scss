@@ -1,0 +1,16 @@
+@use '../../../../styles/mixins' as mixins;
+@use '../../../../styles/spacing' as spacing;
+@use '../../../../styles/colors' as colors;
+
+:host {
+  @include mixins.background-blur;
+  padding-top: spacing.$x4-large;
+}
+
+p {
+  margin-left: spacing.$x-large;
+}
+
+.missed-attributions {
+  color: colors.$secondary;
+}

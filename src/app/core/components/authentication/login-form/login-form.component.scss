@@ -1,0 +1,55 @@
+@use 'colors' as colors;
+@use 'spacing' as spacing;
+
+.login-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  justify-content: space-between;
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__subtitle {
+    color: colors.$secondary-light;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.blur {
+  filter: blur(1px);
+  cursor: progress;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(colors.$white, 0.7);
+  z-index: 1;
+}
+
+.submit-button {
+  background-color: colors.$primary-dark;
+  color: colors.$milky-white;
+  padding: spacing.$spacing-medium spacing.$spacing-large;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: colors.$primary;
+  }
+
+  &:disabled {
+    background-color: colors.$secondary-very-light;
+    cursor: not-allowed;
+  }
+}

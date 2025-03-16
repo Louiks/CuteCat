@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'colors' as colors;
+@use 'spacing' as spacing;
+@import 'material-icons/iconfont/material-icons.css';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+.snack-bar-overwrite {
+  background-color: colors.$error-bg;
+  color: colors.$error;
+  border-radius: 1rem;
+  margin-bottom: spacing.$x-large !important;
+  font-weight: 600;
+
+  .mat-mdc-snackbar-surface {
+    border-radius: 1rem !important;
+  }
+
+  //
+
+}

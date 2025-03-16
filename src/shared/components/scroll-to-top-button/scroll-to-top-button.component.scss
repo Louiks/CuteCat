@@ -1,0 +1,12 @@
+@use 'spacing' as spacing;
+@use 'colors' as colors;
+
+.scroll-top {
+  position: fixed;
+  bottom: spacing.$spacing-large;
+  right: spacing.$spacing-large;
+  background-color: colors.$white;
+  box-shadow: 0 2px 5px rgba(colors.$black, 0.2);
+  transition: opacity 0.3s ease-in-out;
+  overflow: hidden;
+}
