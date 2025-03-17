@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, combineLatest, map, Observable, switchMap, tap } from "rxjs";
+import { BehaviorSubject, combineLatest, map, Observable, Subject, switchMap, takeUntil, tap } from "rxjs";
 import { Cat } from "../models/cat.model";
 import { CatFactsTO } from "../models/cat-facts.model";
 import { CatNamesTO } from "../models/cat-names.model";
@@ -10,21 +10,35 @@ import { NotificationService } from "../../app/core/services/notification.servic
 @Injectable({
     providedIn: 'root'
 })
-export class CatDataService {
+export class CatDataService implements OnDestroy {
     private readonly RANDOM_CAT_FACTS_URL: string = 'https://meowfacts.herokuapp.com';
     private readonly RANDOM_CAT_PICTURE_URL: string = 'https://api.thecatapi.com/v1/images/search';
     private readonly RANDOM_CAT_NAME_URL: string = 'https://tools.estevecastells.com/api/cats/v1';
     private readonly INITIAL_NUMBER_OF_CATS_TO_LOAD: number = 10;
 
+    private unsubscribe$: Subject<void> = new Subject<void>();
+    private isCatRetrievalEnabled: boolean = true;
     private catFacts: Set<string> = new Set<string>();
     private catPictures: Set<string> = new Set<string>();
     private catNames: Set<string> = new Set<string>();
+
+    private isLoadingCatsSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    isLoadingCats$: Observable<boolean> = this.isLoadingCatsSubject.asObservable();
+
     private loadedCatsSubject: BehaviorSubject<Cat[]> = new BehaviorSubject<Cat[]>([]);
     loadedCats$: Observable<Cat[]> = this.loadedCatsSubject.asObservable();
-    private isCatRetrievalEnabled: boolean = true;
 
     constructor(private httpClient: HttpClient, private notificationService: NotificationService) {
         this.loadMoreCats(this.INITIAL_NUMBER_OF_CATS_TO_LOAD);
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+    }
+
+    isLoadingCats(): boolean {
+        return this.isLoadingCatsSubject.getValue();
     }
 
     loadMoreCats(numberOfCatsToLoad: number): void {
@@ -32,10 +46,12 @@ export class CatDataService {
             return;
         }
 
+        this.isLoadingCatsSubject.next(true);
         combineLatest([
             this.loadCatFacts(numberOfCatsToLoad, [], 3),
             this.loadCatNames(numberOfCatsToLoad, [], 3),
             this.loadCatPictures(numberOfCatsToLoad, [], 3)])
+            .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: ([facts, names, pictures]) => {
                     facts.forEach((fact: string) => this.catFacts.add(fact));
@@ -53,11 +69,13 @@ export class CatDataService {
                         newCats.push(newCat);
                     }
                     this.loadedCatsSubject.next([...this.loadedCatsSubject.value, ...newCats]);
+                    this.isLoadingCatsSubject.next(false);
                 },
                 error: () => {
                     this.disableCatRetrieval();
                     this.emitOldValue();
                     this.notificationService.showNotification("Cats can no longer be loaded; reason: retrieving too many duplicates.");
+                    this.isLoadingCatsSubject.next(false);
                 }
             });
     }
