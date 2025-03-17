@@ -51,8 +51,10 @@ CuteCat/
 - Provides a user-friendly interface.
 - Allows the user to log in.
 - Allows the user to log out.
+- Fetches and combines data from different sources.
+- Provides infinite scrolling experience.
 - Includes a page outlining the application goals.
-- Provides infinite scrolling experience
+- Includes a credits page.
 
 # Installation
 
@@ -90,7 +92,7 @@ The application has been tested with unit tests.
 - unit tests (jasmine):
     - 50 unique tests
     - Can be found across the whole folder structure.
-    - Can be run using `npm test` command
+    - Can be run using `npm run ng test` command
 
 # Deployment
 

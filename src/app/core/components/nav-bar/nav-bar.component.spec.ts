@@ -94,7 +94,7 @@ describe('NavBarComponent', () => {
         authenticationService.isLoggedIn.and.returnValue(true);
 
         // when
-        const result = component.isLoggedIn();
+        const result: boolean = component.isLoggedIn();
 
         // then
         expect(result).toBeTrue();

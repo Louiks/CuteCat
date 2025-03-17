@@ -18,6 +18,7 @@ describe('GoalPageComponent', () => {
     });
 
     it('should create', () => {
+        // given when then
         expect(component).toBeTruthy();
     });
 });

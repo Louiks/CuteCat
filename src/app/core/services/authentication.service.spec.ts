@@ -43,7 +43,7 @@ describe('AuthenticationService', () => {
         expect(result).toBeFalse();
     });
 
-    it('should set token in localStorage on login', (done) => {
+    it('should set token in localStorage on login', (done: DoneFn) => {
         // given
         const email: string = 'test@example.com';
         const password: string = 'P@ssw04d123';

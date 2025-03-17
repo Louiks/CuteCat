@@ -18,6 +18,7 @@ describe('CreditsPageComponent', () => {
     });
 
     it('should create', () => {
+        // given when then
         expect(component).toBeTruthy();
     });
 });
