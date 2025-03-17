@@ -9,8 +9,8 @@ export const routes: Routes = [
         canActivate: [authenticationGuard]
     },
     {
-        path: 'goal',
-        loadComponent: () => import('./core/pages/goal-page/goal-page.component').then(_ => _.GoalPageComponent),
+        path: 'goals',
+        loadComponent: () => import('./core/pages/goals-page/goals-page.component').then(_ => _.GoalsPageComponent),
         canActivate: [unauthenticationGuard]
     },
     {

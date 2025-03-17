@@ -31,7 +31,7 @@ CuteCat/
 │  │  │  ├── pages/
 │  │  │  │  ├── cats-page/
 │  │  │  │  ├── credits-page/
-│  │  │  │  ├── goal-page/
+│  │  │  │  ├── goals-page/
 │  │  │  ├── pipes/
 │  │  │  ├── services/
 │  ├── assets/

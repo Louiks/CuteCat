@@ -28,7 +28,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     @ViewChildren('nav') nav?: HTMLElement;
 
     readonly CATS_ROUTE: string = '/cats';
-    readonly GOAL_ROUTE: string = '/goal';
+    readonly GOALS_ROUTE: string = '/goals';
     readonly CREDITS_ROUTE: string = '/credits';
     readonly MAT_RIPPLE_COLOR: string = "rgba(255, 255, 255, 0.2)";
     readonly buttons = [
@@ -38,8 +38,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
             rippleColor: this.MAT_RIPPLE_COLOR
         },
         {
-            title: 'Navigate to Goal page',
-            label: 'Goal', route: this.GOAL_ROUTE,
+            title: 'Navigate to Goals page',
+            label: 'Goals', route: this.GOALS_ROUTE,
             rippleColor: this.MAT_RIPPLE_COLOR
         },
         {
